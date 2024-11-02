@@ -19,7 +19,7 @@ services:
       MYSQL_USER: user  # Nome de usuário
       MYSQL_PASSWORD: password  # Senha do usuário
     ports:
-      - "3306:3306"  # Porta padrão do MySQL
+      - "33061:3306"  # Porta padrão do MySQL
     volumes:
       - db_data:/var/lib/mysql  # Persistência de dados
 
