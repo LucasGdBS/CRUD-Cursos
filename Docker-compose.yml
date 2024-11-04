@@ -1,27 +1,39 @@
 services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: gestor_cursos
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "33061:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
   app:
     build: .
-    volumes:
-      - .:/app
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: "mysql+aiomysql://user:password@db/gestor_cursos"  # Use as credenciais adequadas
+      DATABASE_URL: "mysql+aiomysql://user:password@db/gestor_cursos"
     depends_on:
-      - db
-
-  db:
-    image: mysql:latest  # Versão do MySQL
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root_password  # Senha do root
-      MYSQL_DATABASE: gestor_cursos  # Nome do banco de dados
-      MYSQL_USER: user  # Nome de usuário
-      MYSQL_PASSWORD: password  # Senha do usuário
-    ports:
-      - "33061:3306"  # Porta padrão do MySQL
-    volumes:
-      - db_data:/var/lib/mysql  # Persistência de dados
+      db:
+        condition: service_healthy  # Espera até o db estar "healthy"
+    networks:
+      - app_net
 
 volumes:
   db_data:
+
+networks:
+  app_net:
+    driver: bridge
