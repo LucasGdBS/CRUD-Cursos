@@ -53,16 +53,24 @@ app.include_router(aluno_router)
 app.include_router(curso_router)
 app.include_router(inscricao_router)
 
-@app.get("/alunos/curso/{curso_titulo}", response_model=List[InscricaoCreateSchema], tags=["Alunos"])
+@app.get("/alunos/curso/{curso_titulo}", response_model=List[AlunoCreateSchema], tags=["Alunos"])
 async def listar_alunos_por_curso(curso_titulo: str, session: AsyncSession = Depends(get_session)):
-    alunos = await get_alunos_por_curso(curso_titulo, session)
-    if not alunos:
-        raise HTTPException(status_code=404, detail="Curso não encontrado ou sem alunos")
-    return alunos
+    try:
+        alunos = await get_alunos_por_curso(curso_titulo, session)
+        if not alunos:
+            raise HTTPException(status_code=404, detail="Curso não encontrado ou sem alunos")
+        return alunos
+    except Exception as e:
+        print(f"Erro ao listar alunos por curso: {e}")
+        raise HTTPException(status_code=500, detail="Erro interno do servidor")
 
 @app.get("/alunos/{aluno_id}/cursos", response_model=List[CursoCreateSchema], tags=["Alunos"])
 async def listar_cursos_por_aluno(aluno_id: int, session: AsyncSession = Depends(get_session)):
-    cursos = await get_aluno_cursos(aluno_id, session)
-    if not cursos:
-        raise HTTPException(status_code=404, detail="Aluno não encontrado ou sem cursos")
-    return [curso for _, curso in cursos]  
+    try:
+        cursos = await get_aluno_cursos(aluno_id, session)
+        if not cursos:
+            raise HTTPException(status_code=404, detail="Aluno não encontrado ou sem cursos")
+        return cursos  
+    except Exception as e:
+        print(f"Erro ao listar cursos por aluno: {e}")
+        raise HTTPException(status_code=500, detail="Erro interno do servidor")

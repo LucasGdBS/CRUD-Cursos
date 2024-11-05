@@ -42,12 +42,12 @@ async def inserir_dados():
                 session.add_all([aluno1, aluno2, aluno3, aluno4, aluno5, aluno6])
 
                 # Inserindo dados na tabela Curso
-                curso1 = Curso(titulo="Cerêmica", descricao="Curso de Cerâmica")
-                curso2 = Curso(titulo="Culinária", descricao="Curso de Culinária")
-                curso3 = Curso(titulo="Matemática", descricao="Curso de Matemática Básica")
-                curso4 = Curso(titulo="Artes", descricao="Curso de Artes")
-                curso5 = Curso(titulo="Violão", descricao="Curso de Violão Básico")
-                curso6 = Curso(titulo="Guitarra", descricao="Curso de Guitarra")
+                curso1 = Curso(titulo="Cerâmica", descricao="Curso de Cerâmica", data_inicio="2024-01-20", data_fim="2024-03-03")
+                curso2 = Curso(titulo="Culinária", descricao="Curso de Culinária", data_inicio="2024-02-15", data_fim="2024-04-15")
+                curso3 = Curso(titulo="Matemática", descricao="Curso de Matemática Básica", data_inicio="2024-03-01", data_fim="2024-05-01")
+                curso4 = Curso(titulo="Artes", descricao="Curso de Artes", data_inicio="2024-04-10", data_fim="2024-06-10")
+                curso5 = Curso(titulo="Violão", descricao="Curso de Violão Básico", data_inicio="2024-05-05", data_fim="2024-07-05")
+                curso6 = Curso(titulo="Guitarra", descricao="Curso de Guitarra", data_inicio="2024-06-20", data_fim="2024-08-20")
                 session.add_all([curso1, curso2, curso3, curso4, curso5, curso6])
 
                 # Inserindo dados na tabela Inscricao

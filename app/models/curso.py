@@ -7,8 +7,8 @@ class Curso(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     titulo = Column(String(100), nullable=False)
     descricao = Column(String(100), nullable=False)
-    data_inicio = Column(Date)
-    data_fim = Column(Date)
+    data_inicio = Column(Date, nullable=True)  # Tornar opcional
+    data_fim = Column(Date, nullable=True) 
 
     inscricoes = relationship("Inscricao", back_populates="curso")
 
