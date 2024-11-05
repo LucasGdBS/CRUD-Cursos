@@ -12,9 +12,19 @@ from app.models.inscricao import Inscricao
 from app.models.joins import get_alunos_por_curso, get_aluno_cursos
 from app.schemas.curso_schema import CursoCreateSchema
 from app.schemas.inscricao_schema import InscricaoCreateSchema
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI(lifespan=lifespan)
+
+# Adicione o middleware CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Substitua pela URL do seu frontend
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos os métodos (GET, POST, etc.)
+    allow_headers=["*"],  # Permite todos os cabeçalhos
+)
 
 aluno_crud = FastCRUD(Aluno)
 aluno_router = crud_router(
