@@ -31,6 +31,18 @@ services:
     networks:
       - app_net
 
+  frontend:
+    build:
+      context: ./interface
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    networks:
+      - app_net
+    depends_on:
+      - app
+
+
 volumes:
   db_data:
 
