@@ -16,7 +16,7 @@ export default function FormMatricula({ onSubmit, labels }: FormularioProps) {
     <div className="flex flex-col" key={index}>
       <label htmlFor={`${label.name}`}>{label.label}</label>
       <input
-        className="text-black"
+        className="text-black w-full text-lg border border-border rounded-md"
         type={`${label.type}`}
         name={`${label.name}`}
         id={`${label.name}`}
@@ -26,7 +26,7 @@ export default function FormMatricula({ onSubmit, labels }: FormularioProps) {
   <div className="py-8 flex justify-center">
     <button
       type="reset"
-      className="bg-blue-500 text-white rounded-md py-2 h-10 w-1/2 font-semibold hover:bg-blue-700"
+      className="w-full bg-blue-500 text-white rounded-md py-2 h-10 w-1/2 font-semibold hover:bg-blue-700"
       onClick={onSubmit}
     >
       Criar

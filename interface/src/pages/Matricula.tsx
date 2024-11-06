@@ -74,8 +74,8 @@ export default function Matricula() {
       {/* Seção principal com Alunos, Disciplinas e Matricular */}
       <div className="flex justify-center space-x-16">
         {/* Alunos */}
-        <div className="bg-black border rounded-xl flex flex-col py-8 px-6 w-1/4">
-          <h2 className="text-center text-4xl">Alunos</h2>
+        <div className="bg-black border rounded-xl flex flex-col py-4 px-6 w-1/4">
+          <h2 className="text-center text-4xl py-8">Alunos</h2>
           <FormMatricula
             labels={[
               { label: "Nome", name: "nome", type: "text" },
@@ -86,8 +86,8 @@ export default function Matricula() {
         </div>
 
         {/* Cursos */}
-        <div className="bg-black border rounded-xl flex flex-col py-8 px-6 w-1/4">
-          <h2 className="text-center text-4xl">Disciplinas</h2>
+        <div className="bg-black border rounded-xl flex flex-col py-4 px-6 w-1/4">
+          <h2 className="text-center text-4xl py-8">Disciplinas</h2>
           <FormMatricula
             labels={[
               { label: "Titulo", name: "Titulo", type: "text" },
@@ -100,9 +100,9 @@ export default function Matricula() {
         </div>
 
         {/* Matricular */}
-        <div className="bg-black border rounded-xl flex flex-col py-8 px-6 w-1/4 items-center">
-          <h2 className="text-center text-4xl">Matricular</h2>
-          <div className="flex flex-col space-y-4 mt-4">
+        <div className="bg-black border rounded-xl flex flex-col py-4 px-6 w-1/4 items-center">
+          <h2 className="text-center text-4xl py-8">Matricular</h2>
+          <div className="flex flex-col mt-4">
             <label className="text-lg">Aluno</label>
             <select onChange={(e) => setSelectedAluno(e.target.value)} value={selectedAluno} className="text-black">
               <option value="">Selecione um Aluno</option>
@@ -113,7 +113,7 @@ export default function Matricula() {
               ))}
             </select>
           </div>
-          <div className="flex flex-col space-y-4 mt-4">
+          <div className="flex flex-col mt-4">
             <label className="text-lg">Curso</label>
             <select onChange={(e) => setSelectedCurso(e.target.value)} value={selectedCurso} className="text-black">
               <option value="">Selecione um Curso</option>
@@ -132,9 +132,9 @@ export default function Matricula() {
 
       {/* Listas de Alunos por Curso e Cursos por Aluno */}
       <div className="flex flex-col items-center space-y-8 w-3/4 mt-12">
-        <div className="bg-gray-800 border rounded-xl p-6 w-full">
+        <div className="bg-black border rounded-xl p-6 w-full flex flex-col items-center">
           <h3 className="text-3xl text-center mb-4">Alunos do Curso Selecionado</h3>
-          <button onClick={listarAlunosPorCurso} className="bg-green-500 text-white rounded-md py-2 px-4 font-semibold hover:bg-green-700 mb-4">
+          <button onClick={listarAlunosPorCurso} className="bg-blue-500 text-white rounded-md py-2 h-10 w-2/5 font-semibold hover:bg-blue-700 mb-4">
             Listar Alunos por Curso
           </button>
           <ul className="list-disc list-inside">
@@ -144,9 +144,9 @@ export default function Matricula() {
           </ul>
         </div>
 
-        <div className="bg-gray-800 border rounded-xl p-6 w-full">
+        <div className="bg-black border rounded-xl p-6 w-full flex flex-col items-center">
           <h3 className="text-3xl text-center mb-4">Cursos do Aluno Selecionado</h3>
-          <button onClick={listarCursosPorAluno} className="bg-green-500 text-white rounded-md py-2 px-4 font-semibold hover:bg-green-700 mb-4">
+          <button onClick={listarCursosPorAluno} className="bg-blue-500 text-white rounded-md py-2 h-10 w-2/5 font-semibold hover:bg-blue-700 mb-4">
             Listar Cursos por Aluno
           </button>
           <ul className="list-disc list-inside">
