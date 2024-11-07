@@ -175,6 +175,7 @@ export default function Matricula() {
         console.error("Erro ao criar curso:", response.statusText);
         alert("Falha ao criar curso.");
       }
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao criar curso:", error);
       alert("Erro de rede ao tentar criar curso.");
@@ -207,6 +208,7 @@ export default function Matricula() {
         console.error("Erro ao criar aluno:", response.statusText);
         alert("Falha ao criar aluno.");
       }
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao criar aluno:", error);
       alert("Erro de rede ao tentar criar aluno.");
